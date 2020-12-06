@@ -1,0 +1,69 @@
+
+npm install -g sass
+sass style.scss style.css --watch
+
+scss nested code
+.header {
+    height: 200px;
+    &__logo {
+    background-color: red;
+    display: block;
+    height: 100%;
+    }
+}
+
+variable
+$primary-color: blue;
+
+mixin
+@mixin flex-box($align: flex-start, $justify: flex-start, $wrap: wrap) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-wrap: $wrap;
+
+
+Cách dùng:  include 
+Mặc định hoặc truyền thêm giá trị của biến
+
+@mixin absolute($dir:left) {
+    position: absolute;
+    @if $dir == "top" {
+    top: 50%;
+    transform: translateY(-50%);
+    }
+
+    @if $dir == "left" {
+    left: 10%;
+    transform: translateX(-150%);
+    }    
+}
+
+.header {
+    height: 200px;
+    &__logo {
+        @include flex-box(center, flex-end, nowrap);
+        @include absolute(top);
+    }
+}
+
+Cho box-sizing = border-box để ko bị sai kích thước
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+Đặt font-size = 62,5% để tiện đặt kích thước theo rem
+html {
+    font-size: 62.5%; //1rem = 10px
+}
+
+Cho img thành 1 block, kích thước img tính theo thẻ chứa nó
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+
